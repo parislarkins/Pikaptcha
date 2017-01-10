@@ -29,7 +29,8 @@ def proc_mail(M):
                     try:
                         validate_response = "Failed"
                         while(validate_response == "Failed"):
-                            print "wtf"
+                            validlink = validlink.replace('=','')
+                            print(validlink)
                             validate_response = activateurl(validlink)
                         print "Verified email and trashing Email with key: " + validlink[60:] + "\n"
                         M.store(num,'+X-GM-LABELS', '\\Trash')
