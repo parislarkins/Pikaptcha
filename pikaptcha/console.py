@@ -171,7 +171,7 @@ def entry():
         
                     # Verify email
                     if (args.autoverify == True):
-                        email_verify(args.gm, args.googlepass)
+                        email_verify(args.gmail, args.googlepass)
                     
                     # Append usernames 
                     with open(args.textfile, "a") as ulist:
