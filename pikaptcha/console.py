@@ -90,7 +90,11 @@ def parse_arguments(args):
     parser.add_argument(
         '-px','--proxy', type=str, default=None,
         help='Proxy to be used when accepting the Terms of Services. Must be host:port (ex. 1.1.1.1:80). Must be a HTTPS proxy.'
-    )        
+    )
+    parser.add_argument(
+        '-gm','--gmail', type=str, default=None,
+        help='Gmail account to be used for auto verify'
+    )     
 
     return parser.parse_args(args)
 
@@ -167,7 +171,7 @@ def entry():
         
                     # Verify email
                     if (args.autoverify == True):
-                        email_verify(args.plusmail, args.googlepass)
+                        email_verify(args.gm, args.googlepass)
                     
                     # Append usernames 
                     with open(args.textfile, "a") as ulist:
