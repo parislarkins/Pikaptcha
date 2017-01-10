@@ -274,8 +274,8 @@ def random_account(username=None, password=None, email=None, birthday=None, plus
         _validate_birthday(try_birthday)
 
     if dotmail is not None:
-        try_email = _addPeriodToEmail(try_email, accountsCreated, numPasses, currentPosition)
-        print('Email to create account with: ' + try_email)
+        # try_email = _addPeriodToEmail(try_email, accountsCreated, numPasses, currentPosition)
+        print('Email to create account with plz wtf help omggg: ' + try_email)
 
     account_created = create_account(try_username, password, try_email, try_birthday, captchakey2,
                                      captchatimeout)

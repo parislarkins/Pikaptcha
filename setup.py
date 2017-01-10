@@ -2,7 +2,7 @@ import os
 from io import open
 from setuptools import setup
 
-DIST_NAME = 'Pikaptcha'
+DIST_NAME = 'Pikaptcha-paris'
 VERSION = 'v0.1'
 AUTHOR = 'sriyegna'
 EMAIL = 'sriyegna@gmail.com'
@@ -16,7 +16,7 @@ with open(os.path.join(setup_dir, 'README.md'), encoding='utf-8') as readme:
 
 setup(
     name=DIST_NAME,
-    packages=['pikaptcha'],
+    packages=['pikaptcha-paris'],
     version=VERSION,
     description='Pokemon Go Bulk Account Creator.',
     author=AUTHOR,
@@ -38,7 +38,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pikaptcha = pikaptcha.console:entry',
+            'pikaptcha-paris = pikaptcha.console:entry',
         ],
     }
 )
