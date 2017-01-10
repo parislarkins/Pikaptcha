@@ -15,6 +15,7 @@ def openurl(address):
     return "Failed"
 
 def activateurl(address):
+    print(address)
     try:
         urlresponse = urllib2.urlopen(address)
         return urlresponse
