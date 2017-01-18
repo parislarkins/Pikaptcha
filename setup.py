@@ -2,12 +2,12 @@ import os
 from io import open
 from setuptools import setup
 
-DIST_NAME = 'Pikaptcha-paris'
+DIST_NAME = 'pikaptcha-paris'
 VERSION = 'v0.1'
-AUTHOR = 'sriyegna'
-EMAIL = 'sriyegna@gmail.com'
-GITHUB_USER = 'sriyegna'
-GITHUB_URL = 'https://github.com/{GITHUB_USER}/{DIST_NAME}'.format(**locals())
+AUTHOR = 'paris'
+EMAIL = 'paris.larkins@gmail.com'
+GITHUB_USER = 'parislarkins'
+GITHUB_URL = 'https://github.com/{GITHUB_USER}/pikaptcha'.format(**locals())
 
 # Get the long description from the README file
 setup_dir = os.path.dirname(os.path.realpath(__file__))
@@ -38,7 +38,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'pikaptcha-paris = pikaptcha.console:entry',
+            'pikaptcha-paris = pikaptcha-paris.console:entry',
         ],
     }
 )
