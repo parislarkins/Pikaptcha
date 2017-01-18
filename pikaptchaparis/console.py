@@ -99,6 +99,14 @@ def parse_arguments(args):
         '-dp', '--dotmailPosition', type=int, default=1,
         help='First position of the dot.  Defaults to 1'
     )
+    parser.add_argument(
+        '-gm','--gmail', type=str, default=None,
+        help='Gmail account to be used for auto verify'
+    ) 
+    parser.add_argument( 
+        '-tos','--accept-tos', type=bool, default=True, 
+        help='Whether to accept terms of service for created accounts or not' 
+    ) 
     return parser.parse_args(args)
 
 
@@ -202,11 +210,20 @@ def entry():
                         print('  Username:  {}'.format(account_info["username"]))
                         print('  Password:  {}'.format(account_info["password"]))
                         print('  Email   :  {}'.format(account_info["email"]))
+
                         # Accept Terms Service
-                        accept_tos(account_info["username"], account_info["password"], args.location,
-                                   args.proxy)  # Verify email
+ 
+                        if(args.tos): 
+                            accept_tos(account_info["username"], account_info["password"], args.location, args.proxy) 
+                        else: 
+                            print "Skipping TOS acceptance" 
+
+                        #Verify email
                         if (args.autoverify == True):
-                            email_verify(args.plusmail, args.googlepass)
+                            if (args.gmail != ""):
+                                email_verify(args.gmail,args.googlepass)
+                            else:
+                                email_verify(args.plusmail, args.googlepass)
 
                         # Append usernames
                         with open(args.textfile, "a") as ulist:
