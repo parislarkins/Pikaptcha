@@ -104,7 +104,7 @@ def parse_arguments(args):
         help='Gmail account to be used for auto verify'
     ) 
     parser.add_argument( 
-        '-tos','--accept-tos', type=bool, default=True, 
+        '-tos','--accepttos', type=bool, default=True, 
         help='Whether to accept terms of service for created accounts or not' 
     ) 
     return parser.parse_args(args)
@@ -212,7 +212,7 @@ def entry():
 
                         # Accept Terms Service
  
-                        if(args.tos): 
+                        if(args.accepttos): 
                             accept_tos(account_info["username"], account_info["password"], args.location, args.proxy) 
                         else: 
                             print "Skipping TOS acceptance" 
