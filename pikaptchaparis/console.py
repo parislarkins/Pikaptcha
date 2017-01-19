@@ -103,12 +103,10 @@ def parse_arguments(args):
         '-gm','--gmail', type=str, default=None,
         help='Gmail account to be used for auto verify'
     ) 
-    parser.add_argument( 
-        '-tos','--accepttos', type=bool, default=True, 
-        help='Whether to accept terms of service for created accounts or not' 
-    ) 
+    parser.add_argument('--accepttos', dest='accepttos', action='store_true')
+    parser.add_argument('--no-tos', dest='accepttos', action='store_false')
+    parser.set_defaults(feature=True)
     return parser.parse_args(args)
-
 
 def _verify_autoverify_email(settings):
     if (settings['args'].autoverify == True and settings['args'].plusmail == None):
@@ -147,6 +145,9 @@ def _verify_settings(settings):
 def entry():
     """Main entry point for the package console commands"""
     args = parse_arguments(sys.argv[1:])
+
+    # print("Accept TOS: " + str(args.accepttos))
+
     captchabal = None
     if args.recaptcha != None:
         captchabal = "Failed"
@@ -219,9 +220,7 @@ def entry():
 
                         #Verify email
                         if (args.autoverify == True):
-                            if (args.gmail != ""):
-                                email_verify(args.gmail,args.googlepass)
-                            else:
+                            if (args.gmail == ""):
                                 email_verify(args.plusmail, args.googlepass)
 
                         # Append usernames
@@ -243,7 +242,26 @@ def entry():
             except Exception:
                 import traceback
                 print("Generic Exception: " + traceback.format_exc())
-
+        
         with open(args.textfile, "a") as ulist:
           ulist.write("\n")
           ulist.close()
+
+        
+        if(args.gmail != "" and args.autoverify):
+            print("Account creation done")
+            print("Waiting 2 minutes for forwarded emails to arrive...")
+            # print("5")
+            # time.sleep(1)
+            # print("4")
+            # time.sleep(1)
+            # print("3")
+            # time.sleep(1)
+            # print("2")
+            # time.sleep(1)
+            # print("1")
+            # time.sleep(1)
+            time.sleep(120)
+            print("Verifying accounts...")
+            email_verify(args.gmail, args.googlepass)
+            print("Done!")
