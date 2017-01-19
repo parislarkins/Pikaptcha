@@ -185,8 +185,7 @@ def entry():
                     # todo:  Add in a check that verifies there is an @ sign
                     numChars = args.plusmail.find('@')
                     account_info = pikaptcha.random_account(username, args.password, args.email, args.birthday,
-                                                            args.plusmail, args.recaptcha, args.captchatimeout,
-                                                            args.dotmail, numPasses, x, currentPosition)
+                                                            args.plusmail, args.recaptcha, args.captchatimeout)
                     if numPasses % 3 == 0:
                         if currentPosition + 1 == numChars:
                             currentPosition = 2
